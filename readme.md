@@ -4,6 +4,7 @@ It started when I wanted to have a running instance of Homebridge to use my smar
 However soon I found out that Homebridge doesn't work in a docker bridge mode and you can't access it remotely from Home.app, so sad I know...((. The researching of this problem got me to realise that I should have a mDNS announcer on local network. I tried different approaches and found the one that suites me best - use ESP8266 Wemos D1 mini.
 
 ## Advertising a Homekit bridge
+## Get config from Homebridge remote server
 You need to get the bridge parameters from the running Homebridge container. You can do this by running the console command inside the container installing the avahi-utils (avahi should be listed as default service in your homebridge.conf) and then resolving mDNS record from "_hap._tcp" service like this:
 
 ```sh
