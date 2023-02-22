@@ -1,0 +1,20 @@
+{
+  "name": "mdns",
+  "version": "1.0.0",
+  "description": "mDNS Announcer project for homebridge",
+  "main": "app/via-bonjour.js",
+  "scripts": {
+    "npx": "node app/via-bonjour.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mdns",
+    "homebridge"
+  ],
+  "author": "TheRealMaN_",
+  "license": "ISC",
+  "dependencies": {
+    "@homebridge/ciao": "^1.1.5",
+    "bonjour-hap": "^3.6.4"
+  }
+}
