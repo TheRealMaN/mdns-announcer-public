@@ -74,6 +74,13 @@ That's all, it should compile successfully and work properly) Customize it for y
 
 Arduino IDE code example in folder "app/via-esp8266.js" 
 
+### Using mdns-utils (mDNSResponder package) on a router with OpenWRT firmawre
+You can use "dns-sd" command like on macOS, but it needs additional mdns-utils and coreutils-nohup packages.
+
+After installing these packages you can add command to startup script:
+```sh
+nohup dns-sd -P "Homebridge A2BA 0231" _hap._tcp local 51226 "vps.ddns.net" "22.132.1.1" "pv=1.1" "ff=0" "s#=1" "md=homebridge" "c#=4" "id=0E:5F:63:56:A3:BA" "sf=0" "ci=2" "sh=231uIQ==" &
+```
 
 ### Using an Avahi on linux
 I dont have exmaple at the moment, but it shuld be something like that:
