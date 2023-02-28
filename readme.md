@@ -1,7 +1,7 @@
 # mDNS Announcer for Homebridge
-It started when I wanted to have a running instance of Homebridge to use my smart devices with an Apple Home app. I didn't want to have a 24/7 running mac and didn't have any Raspberry Pi, Orange Pi to install HB on. But I had a remote VPS running a docker, so I thought that it would be great to run a Homebridge in a container there and then point all my iOS devices to it.
+It started when I wanted to have a running instance of Homebridge to use my smart devices with an Apple "Home" app. I didn't want to have a 24/7 running mac or didn't have any Raspberry Pi, Orange Pi to install Homebridge there. But I had a remote VPS running a Docker, so I thought that it would be great to run a Homebridge in a container there and then point all my iOS devices to it.
 
-However soon I found out that Homebridge doesn't work in a docker bridge mode and you can't access it remotely from Home.app, so sad I know...((. The researching of this problem got me to realise that I should have a mDNS announcer on local network. I tried different approaches and found the one that suites me best - use ESP8266 Wemos D1 mini.
+However, I found out that Homebridge doesn't work in a Docker "bridge mode" and you can't access it remotly from "Home" apps, so sad((. The researching of this problem got me to realise that I should have a mDNS announcer on local network for "Home" apps to work properly. I tried a different approach and found the one that suites me best - use ESP8266 Wemos D1 for mDNS announcing and later installed openWRT on my router and ran dns-sd command there.
 
 ## Advertising a Homekit bridge
 ## Get config from Homebridge remote server
@@ -75,15 +75,15 @@ That's all, it should compile successfully and work properly) Customize it for y
 Arduino IDE code example in folder "app/via-esp8266.js" 
 
 ### Using mdns-utils (mDNSResponder package) on a router with OpenWRT firmawre
-You can use "dns-sd" command like on macOS, but it needs additional mdns-utils and coreutils-nohup packages.
+You can use "dns-sd" command like on a macOS, but it needs the additional "mdns-utils" and "coreutils-nohup" packages.
 
-After installing these packages you can add command to startup script:
+After installing these packages you can add command to "System" -> "Startup" script:
 ```sh
-nohup dns-sd -P "Homebridge A2BA 0231" _hap._tcp local 51226 "vps.ddns.net" "22.132.1.1" "pv=1.1" "ff=0" "s#=1" "md=homebridge" "c#=4" "id=0E:5F:63:56:A3:BA" "sf=0" "ci=2" "sh=231uIQ==" &
+nohup dns-sd -P "Homebridge A2BA 0231" _hap._tcp local 51226 "myvps.ddns.net" "22.132.1.1" "pv=1.1" "ff=0" "s#=1" "md=homebridge" "c#=4" "id=0E:5F:63:56:A3:BA" "sf=0" "ci=2" "sh=231uIQ==" &
 ```
 
 ### Using an Avahi on linux
-I dont have exmaple at the moment, but it shuld be something like that:
+I don't have an exmaple at the moment, but it shuold be something like that:
 ```sh
 avahi-publish -s [options] name service-type port [TXT data ...]
 ```
