@@ -1,5 +1,5 @@
 # mDNS Announcer for Homebridge
-It started when I wanted to have a running instance of Homebridge to use my smart devices with an Apple "Home" app. I didn't want to have a 24/7 running mac or didn't have any Raspberry Pi, Orange Pi to install Homebridge there. But I had a remote VPS running a Docker, so I thought that it would be great to run a Homebridge in a container there and then point all my iOS devices to it.
+It started when I wanted to have a running instance of Homebridge to use my smart devices with Apple "Home" app. I didn't want to have a 24/7 running mac or didn't have any Raspberry Pi, Orange Pi to install Homebridge there. But I had a remote VPS running a Docker, so I thought that it would be great to run a Homebridge in a container there and then point all my iOS devices to it.
 
 However, I found out that Homebridge doesn't work in a Docker "bridge mode" and you can't access it remotly from "Home" apps, so sad((. The researching of this problem got me to realise that I should have a mDNS announcer on local network for "Home" apps to work properly. I tried a different approach and found the one that suites me best - use ESP8266 Wemos D1 for mDNS announcing and later installed openWRT on my router and ran dns-sd command there.
 
